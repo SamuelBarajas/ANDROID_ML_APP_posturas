@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/identify_pose"
-        android:title="Identificar pose"
+        android:title="Identificar postura"
         app:showAsAction="never"/>
 
     <item android:id="@+id/capture_angles"
-        android:title="Capturar ángulos"
+        android:title="Capturar postura"
         app:showAsAction="never"/>
 
 </menu>

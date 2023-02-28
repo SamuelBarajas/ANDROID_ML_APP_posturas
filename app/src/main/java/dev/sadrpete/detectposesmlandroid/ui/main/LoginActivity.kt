@@ -8,8 +8,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
 import dev.sadrpete.detectposesmlandroid.R
+import java.util.jar.Manifest
 
 class LoginActivity : AppCompatActivity() {
 
@@ -18,10 +20,16 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var auth:FirebaseAuth
 
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){
+        isGranted ->
+        val message = if(isGranted) "Permission Granted" else "Permission Rejected"
+        Toast.makeText(this,message,Toast.LENGTH_LONG).show()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login2)
-
+        requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
         txtUser=findViewById(R.id.txtUser)
         txtPassword=findViewById(R.id.txtPassword)
         progressBar= findViewById(R.id.progressBar)
@@ -38,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(view:View){
+
         loginUser()
     }
 

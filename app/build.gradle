@@ -59,6 +59,7 @@ dependencies {
 
     // Activity KTX for viewModels()
     implementation "androidx.activity:activity-ktx:1.2.2"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
 
     // ML KIT Pose Detection
     implementation 'com.google.mlkit:pose-detection:17.0.1-beta3'

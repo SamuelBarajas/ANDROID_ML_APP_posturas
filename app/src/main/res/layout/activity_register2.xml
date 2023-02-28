@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.main.RegisterActivity">
+    tools:context=".ui.main.RegisterActivity"
+    android:background="#202020">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -15,51 +16,70 @@
         android:indeterminate="true"
         android:visibility="gone"/>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/sadrpete_logo" />
+
     <EditText
         android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Nombre"
-        android:layout_margin="10dp" />
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/white"/>
 
     <EditText
         android:id="@+id/txtLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
+        android:hint="Apellido"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Apellido"
-        android:layout_margin="10dp" />
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/white"/>
 
     <EditText
         android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:hint="Correo"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:layout_margin="10dp"/>
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/white"/>
 
     <EditText
         android:id="@+id/txtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="Contraseña"
+        android:inputType="textPassword"
         android:minHeight="48dp"
-        android:layout_margin="10dp"/>
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/white"/>
 
     <Button
-        android:onClick="register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#239EAA"
+        android:onClick="register"
         android:text="Crear cuenta"
-        android:background="@color/design_default_color_primary"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white" />
 </LinearLayout>

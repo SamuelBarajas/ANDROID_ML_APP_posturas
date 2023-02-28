@@ -61,8 +61,9 @@ class MainActivity : BaseActivity() {
                 this.displayToast("Permissions not granted by the user.")
                 finish()
             }, onGrantedAction = {
-                // startCamera()
-            })
+                 //startCamera()
+            }
+        )
 
         /*try {
             viewModel.interpreter = Interpreter(viewModel.loadModelFile(), null)

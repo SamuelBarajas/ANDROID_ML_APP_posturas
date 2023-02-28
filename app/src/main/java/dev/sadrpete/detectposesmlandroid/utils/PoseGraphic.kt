@@ -177,7 +177,7 @@ class PoseGraphic internal constructor(
   }
 
   companion object {
-    private const val DOT_RADIUS = 8.0f
+    private const val DOT_RADIUS = 18.0f
     private const val IN_FRAME_LIKELIHOOD_TEXT_SIZE = 30.0f
   }
 
