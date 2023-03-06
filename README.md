@@ -7,12 +7,20 @@ This project is a cross-platform mobile application that uses a Python model to 
 </p>
 
 ## 🔧 Software/Hardware Requierments
-- Python v.3.10 or greater
-- SO Windows 7 or greater (Android version)
+### Mobile Android App
+- (Android version)
 - Camera
 
-## ⚙️ Instalation/Configuration Process
+### Desktop Application
+- Python v.3.10 or greater
+- SO Windows 7 or greater
+- WEB Cam
 
+## ⚙️ Instalation/Configuration Process
+### Mobile Android App
+- Explain the installation Process
+
+### Desktop Application
 - Download installation files from repository
   - Download directly 'setup.zip' file 
   
