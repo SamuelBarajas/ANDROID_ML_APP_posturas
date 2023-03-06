@@ -8,14 +8,14 @@ import dev.sadrpete.detectposesmlandroid.utils.CalculateAngle
 import dev.sadrpete.detectposesmlandroid.utils.PoseDetectorProcessor
 import kotlinx.coroutines.*
 
-class YogaPoseDetector(
+class MLPoseDetector(
     context: Context,
     options: PoseDetectorOptions,
     showInFrameLikelihood: Boolean
 ): PoseDetectorProcessor(context, options, showInFrameLikelihood) {
 
-    private var yogaPose: YogaPose? = null
-    var yogaPoseDetectorListener: YogaPoseDetectorListener? = null
+    private var MLPose: MLPose? = null
+    var MLPoseDetectorListener: MLPoseDetectorListener? = null
 
     override fun identifyPose(context: Context, pose: Pose) {
         /*
@@ -34,7 +34,7 @@ class YogaPoseDetector(
             val leftKneeAngle = async { return@async getLeftKneeAngle(pose) }.await()
             val rightKneeAngle = async {return@async getRightKneeAngle(pose) }.await()
 
-            yogaPose = YogaPose(
+            MLPose = MLPose(
                 leftElbowAngle = leftElbow,
                 rightElbowAngle = rightElbow,
                 leftShoulderAngle = leftShoulder,
@@ -47,8 +47,8 @@ class YogaPoseDetector(
 
             launch {
                 withContext(Dispatchers.Main){
-                    yogaPose?.let {
-                        yogaPoseDetectorListener?.poseIdentified(it)
+                    MLPose?.let {
+                        MLPoseDetectorListener?.poseIdentified(it)
                     }
                 }
             }
@@ -70,7 +70,7 @@ class YogaPoseDetector(
             val leftKnee = async { return@async getLeftKnee(pose) }.await()
             val rightKnee = async {return@async getRightKnee(pose) }.await()
 
-            yogaPose = YogaPose(
+            MLPose = MLPose(
                 leftShoulder = leftShoulder,
                 rightShoulder = rightShoulder,
                 leftElbow = leftElbow,
@@ -83,8 +83,8 @@ class YogaPoseDetector(
 
             launch {
                 withContext(Dispatchers.Main){
-                    yogaPose?.let {
-                        yogaPoseDetectorListener?.poseIdentified(it)
+                    MLPose?.let {
+                        MLPoseDetectorListener?.poseIdentified(it)
                     }
                 }
             }

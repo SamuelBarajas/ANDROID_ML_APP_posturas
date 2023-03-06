@@ -4,7 +4,7 @@ import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.opencsv.CSVWriter
-import dev.sadrpete.detectposesmlandroid.model.YogaPose
+import dev.sadrpete.detectposesmlandroid.model.MLPose
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -16,7 +16,7 @@ class CaptureAnglesViewModel : ViewModel() {
 
     private var fileName: String? = null
 
-    var yogaPoseCaptured: YogaPose? = null
+    var MLPoseCaptured: MLPose? = null
 
     private val dataSet: ArrayList<Array<String>> = ArrayList()
     private var numPoseCaptured: Int = 1
@@ -71,7 +71,7 @@ class CaptureAnglesViewModel : ViewModel() {
         try {
             writer = CSVWriter(FileWriter(fileName))
 
-            yogaPoseCaptured?.let {
+            MLPoseCaptured?.let {
                 Log.d(TAG, "POSE CAPTURED #$numPoseCaptured")
                 dataSet.add(
                     arrayOf(

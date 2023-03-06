@@ -14,7 +14,7 @@ import dev.sadrpete.detectposesmlandroid.utils.VisionImageProcessor
 abstract class BaseActivity: AppCompatActivity() {
 
     // Base pose detector with streaming frames, when depending on the pose-detection sdk
-    val options = PoseDetectorOptions.Builder()
+    private val options = PoseDetectorOptions.Builder()
         .setDetectorMode(PoseDetectorOptions.STREAM_MODE)
         .build()
 

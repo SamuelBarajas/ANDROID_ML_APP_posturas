@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.sadrpete.detectposesmlandroid.model.YogaPoseDetector
+import dev.sadrpete.detectposesmlandroid.model.MLPoseDetector
 import dev.sadrpete.detectposesmlandroid.utils.VisionImageProcessor
 import javax.inject.Singleton
 
@@ -30,6 +30,6 @@ object AppModule {
     @Singleton
     @Provides
     fun provideImageProcessor(context: Context, options: PoseDetectorOptions): VisionImageProcessor {
-        return YogaPoseDetector(context, options, false)
+        return MLPoseDetector(context, options, false)
     }
 }

@@ -5,7 +5,7 @@ import android.content.res.AssetFileDescriptor
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.sadrpete.detectposesmlandroid.model.YogaPose
+import dev.sadrpete.detectposesmlandroid.model.MLPose
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.support.common.FileUtil
 import java.io.FileInputStream
@@ -43,7 +43,7 @@ constructor(
         }
 
         // return output[0][0]
-        return getYogaPosePredicted(output[0])
+        return getPosePredicted(output[0])
     }
 
     @Throws(IOException::class)
@@ -56,7 +56,7 @@ constructor(
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, length)
     }
 
-    private fun getYogaPosePredicted(array: FloatArray): String? {
+    private fun getPosePredicted(array: FloatArray): String? {
         var max = array[0]
         var pos = 0
         for(i in 0..array.size-1){
@@ -67,21 +67,21 @@ constructor(
         }
         Log.d(MainActivity.TAG, "Largest element: $max at position: $pos")
 
-        val yogaName = labels?.get(pos)
-        Log.d(MainActivity.TAG, "Pose Name: $yogaName")
-        return yogaName
+        val Name = labels?.get(pos)
+        Log.d(MainActivity.TAG, "Pose Name: $Name")
+        return Name
     }
 
-    fun normalizeValues(yogaPose: YogaPose): Array<FloatArray> {
+    fun normalizeValues(MLPose: MLPose): Array<FloatArray> {
         val floats = Array(1){ FloatArray(8) }
-        floats[0][0] = (yogaPose.leftShoulderAngle!!.toFloat() - mean[0]) / std[0]
-        floats[0][1] = (yogaPose.rightShoulderAngle!!.toFloat() - mean[1]) / std[1]
-        floats[0][2] = (yogaPose.leftElbowAngle!!.toFloat() - mean[2]) / std[2]
-        floats[0][3] = (yogaPose.rightElbowAngle!!.toFloat() - mean[3]) / std[3]
-        floats[0][4] = (yogaPose.leftHipAngle!!.toFloat() - mean[4]) / std[4]
-        floats[0][5] = (yogaPose.rightHipAngle!!.toFloat() - mean[5]) / std[5]
-        floats[0][6] = (yogaPose.leftKneeAngle!!.toFloat() - mean[6]) / std[6]
-        floats[0][7] = (yogaPose.rightKneeAngle!!.toFloat() - mean[7]) / std[7]
+        floats[0][0] = (MLPose.leftShoulderAngle!!.toFloat() - mean[0]) / std[0]
+        floats[0][1] = (MLPose.rightShoulderAngle!!.toFloat() - mean[1]) / std[1]
+        floats[0][2] = (MLPose.leftElbowAngle!!.toFloat() - mean[2]) / std[2]
+        floats[0][3] = (MLPose.rightElbowAngle!!.toFloat() - mean[3]) / std[3]
+        floats[0][4] = (MLPose.leftHipAngle!!.toFloat() - mean[4]) / std[4]
+        floats[0][5] = (MLPose.rightHipAngle!!.toFloat() - mean[5]) / std[5]
+        floats[0][6] = (MLPose.leftKneeAngle!!.toFloat() - mean[6]) / std[6]
+        floats[0][7] = (MLPose.rightKneeAngle!!.toFloat() - mean[7]) / std[7]
 
         return floats
     }

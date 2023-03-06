@@ -1,11 +1,16 @@
 package dev.sadrpete.detectposesmlandroid.ui.main.fragments.capture_angles
 
 import android.annotation.SuppressLint
+import android.graphics.Matrix
+import android.hardware.camera2.CaptureRequest
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -15,14 +20,17 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sadrpete.detectposesmlandroid.MainNavGraphDirections
+import dev.sadrpete.detectposesmlandroid.R
 import dev.sadrpete.detectposesmlandroid.databinding.FragmentCaptureAnglesBinding
 import dev.sadrpete.detectposesmlandroid.displayToast
-import dev.sadrpete.detectposesmlandroid.model.YogaPose
+import dev.sadrpete.detectposesmlandroid.model.MLPose
 import dev.sadrpete.detectposesmlandroid.ui.main.MainActivity
 import dev.sadrpete.detectposesmlandroid.ui.main.fragments.BaseFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.reflect.Array.set
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -53,12 +61,13 @@ class CaptureAnglesFragment : BaseFragment() {
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
-        binding.btnCaptureAngles.setOnClickListener {
-            // Log.d(TAG, "YogaPoseCaptured: $yogaPoseCaptured")
+        /*binding.btnCaptureAngles.setOnClickListener {
+            // Log.d(TAG, "YogaPoseCaptured: $MLPoseCaptured")
             viewModel.saveYogaPose()
-        }
+        }*/
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
@@ -71,6 +80,7 @@ class CaptureAnglesFragment : BaseFragment() {
                 .build()
                 .also {
                     it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+
                 }
 
             val imageAnalyzer = ImageAnalysis.Builder()
@@ -82,7 +92,7 @@ class CaptureAnglesFragment : BaseFragment() {
                         override fun analyze(imageProxy: ImageProxy) {
 
                             binding.graphicOverlay.setImageSourceInfo(
-                                imageProxy.width, imageProxy.height, false
+                                imageProxy.width, imageProxy.height, true
                             )
 
                             imageProcessor!!.processImageProxy(imageProxy, binding.graphicOverlay)
@@ -90,9 +100,10 @@ class CaptureAnglesFragment : BaseFragment() {
                     })
                 }
 
-
-            // Select back camera as a default
-            val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
+            // Select front camera as a default
+            val cameraSelector = CameraSelector.Builder()
+                .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
+                .build()
 
             try {
                 // Unbind use cases before rebinding
@@ -109,11 +120,11 @@ class CaptureAnglesFragment : BaseFragment() {
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
-    override fun poseIdentified(yogaPose: YogaPose) {
-        viewModel.yogaPoseCaptured = yogaPose
+    override fun poseIdentified(MLPose: MLPose) {
+        viewModel.MLPoseCaptured = MLPose
         lifecycleScope.launch(Dispatchers.Main) {
             delay(300)
-            displayToast(requireContext(), yogaPose.toString())
+            displayToast(requireContext(), MLPose.toString())
         }
     }
 

@@ -8,13 +8,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sadrpete.detectposesmlandroid.model.YogaPoseDetector
-import dev.sadrpete.detectposesmlandroid.model.YogaPoseDetectorListener
+import dev.sadrpete.detectposesmlandroid.model.MLPoseDetector
+import dev.sadrpete.detectposesmlandroid.model.MLPoseDetectorListener
 import dev.sadrpete.detectposesmlandroid.utils.VisionImageProcessor
 import javax.inject.Inject
 
 @AndroidEntryPoint
-abstract class BaseFragment : Fragment(), YogaPoseDetectorListener {
+abstract class BaseFragment : Fragment(), MLPoseDetectorListener {
 
     @Inject
     lateinit var options: PoseDetectorOptions
@@ -24,7 +24,7 @@ abstract class BaseFragment : Fragment(), YogaPoseDetectorListener {
 
     var imageProcessor: VisionImageProcessor? = null
 
-    private var yogaPoseDetector: YogaPoseDetector? = null
+    private var MLPoseDetector: MLPoseDetector? = null
 
     private val permissionCallbacks = HashMap<Int, PermissionRequest>()
 
@@ -66,9 +66,9 @@ abstract class BaseFragment : Fragment(), YogaPoseDetectorListener {
 
         startCamera()
 
-        yogaPoseDetector = YogaPoseDetector(requireContext(), options, false)
-        imageProcessor = yogaPoseDetector
-        yogaPoseDetector!!.yogaPoseDetectorListener = this
+        MLPoseDetector = MLPoseDetector(requireContext(), options, false)
+        imageProcessor = MLPoseDetector
+        MLPoseDetector!!.MLPoseDetectorListener = this
 
     }
 

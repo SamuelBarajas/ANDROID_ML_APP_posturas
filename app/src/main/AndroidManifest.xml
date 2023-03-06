@@ -19,11 +19,11 @@
         <activity
             android:name=".ui.main.ForgotPassActivity"
             android:exported="false"
-            android:theme="@style/AppThemeDos"/>
+            />
         <activity
             android:name=".ui.main.RegisterActivity"
             android:exported="false"
-            android:theme="@style/AppThemeDos"/>
+            />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false" />
@@ -31,7 +31,7 @@
             android:name=".ui.main.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDos">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -3,7 +3,7 @@ package dev.sadrpete.detectposesmlandroid.model
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-data class YogaPose(
+data class MLPose(
     val leftShoulder: Landmark? = null,
     val rightShoulder: Landmark? = null,
 

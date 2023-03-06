@@ -18,7 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sadrpete.detectposesmlandroid.databinding.FragmentIdentifyPoseBinding
 import dev.sadrpete.detectposesmlandroid.displayToast
-import dev.sadrpete.detectposesmlandroid.model.YogaPose
+import dev.sadrpete.detectposesmlandroid.model.MLPose
 import dev.sadrpete.detectposesmlandroid.ui.main.fragments.BaseFragment
 import dev.sadrpete.detectposesmlandroid.ui.main.MainActivity
 import kotlinx.coroutines.Dispatchers
@@ -116,9 +116,9 @@ class IdentifyPoseFragment : BaseFragment() {
 
     }
 
-    override fun poseIdentified(yogaPose: YogaPose) {
+    override fun poseIdentified(MLPose: MLPose) {
         lifecycleScope.launchWhenStarted {
-            val input = viewModel.normalizeValues(yogaPose)
+            val input = viewModel.normalizeValues(MLPose)
             val result = viewModel.doInference(input).toString()
             withContext(Dispatchers.Main){
                 delay(300)
