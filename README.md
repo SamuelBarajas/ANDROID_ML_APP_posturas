@@ -8,8 +8,12 @@ This project is a cross-platform mobile application that uses a Python model to 
 
 ## 🔧 Software/Hardware Requierments
 ### Mobile Android App
-- (Android version)
-- Camera
+- Runtime version: 11.0.15+0-b2043.56-8887301 amd64
+- VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+- kotlin_version = "1.4.21"
+- minSdkVersion 21
+- targetSdkVersion 33
+- camerax_version = "1.1.0-alpha02"
 
 ### Desktop Application
 - Python v.3.10 or greater
@@ -18,7 +22,9 @@ This project is a cross-platform mobile application that uses a Python model to 
 
 ## ⚙️ Instalation/Configuration Process
 ### Mobile Android App
-- Explain the installation Process
+- Download apk file and install.
+  - Provides storage permissions and access to the device's camera.
+  - If you can't provide the permissions from the app, please go to the app settings and add them manually.
 
 ### Desktop Application
 - Download installation files from repository
