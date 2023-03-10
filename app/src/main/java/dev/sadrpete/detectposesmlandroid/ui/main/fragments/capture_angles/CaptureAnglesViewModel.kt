@@ -75,7 +75,7 @@ class CaptureAnglesViewModel : ViewModel() {
                 Log.d(TAG, "POSE CAPTURED #$numPoseCaptured")
                 dataSet.add(
                     arrayOf(
-                        getYogaPoseName(),
+                        getPoseName(),
                         "${it.leftShoulderAngle}",
                         "${it.rightShoulderAngle}",
                         "${it.leftElbowAngle}",
@@ -98,7 +98,7 @@ class CaptureAnglesViewModel : ViewModel() {
         }
     }
 
-    private fun getYogaPoseName(): String {
+    private fun getPoseName(): String {
         return when (numPoseCaptured) {
             in 1..15 -> "Random"
             else -> "WRONG NUM POSE"

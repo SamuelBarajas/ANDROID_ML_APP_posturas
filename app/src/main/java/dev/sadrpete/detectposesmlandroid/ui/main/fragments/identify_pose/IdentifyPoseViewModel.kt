@@ -42,7 +42,7 @@ constructor(
         }
 
         // return output[0][0]
-        return getYogaPosePredicted(output[0])
+        return getPosePredicted(output[0])
     }
 
     @Throws(IOException::class)
@@ -55,7 +55,7 @@ constructor(
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, length)
     }
 
-    private fun getYogaPosePredicted(array: FloatArray): String? {
+    private fun getPosePredicted(array: FloatArray): String? {
         var max = array[0]
         var pos = 0
         for(i in array.indices){
@@ -66,13 +66,13 @@ constructor(
         }
         Log.d(MainActivity.TAG, "Largest element: $max at position: $pos")
 
-        val yogaName = labels?.get(pos)
-        Log.d(MainActivity.TAG, "Pose Name: $yogaName")
-        return yogaName
+        val poseName = labels?.get(pos)
+        Log.d(MainActivity.TAG, "Pose Name: $poseName")
+        return poseName
     }
 
     fun normalizeValues(MLPose: MLPose): Array<FloatArray> {
-        val floats = Array(1){ FloatArray(8) }
+        val floats = Array(1){ FloatArray(7) }
         floats[0][0] = (MLPose.leftShoulderAngle!!.toFloat() - mean[0]) / std[0]
         floats[0][1] = (MLPose.rightShoulderAngle!!.toFloat() - mean[1]) / std[1]
         floats[0][2] = (MLPose.leftElbowAngle!!.toFloat() - mean[2]) / std[2]

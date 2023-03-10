@@ -62,8 +62,8 @@ class CaptureAnglesFragment : BaseFragment() {
         cameraExecutor = Executors.newSingleThreadExecutor()
 
         /*binding.btnCaptureAngles.setOnClickListener {
-            // Log.d(TAG, "YogaPoseCaptured: $MLPoseCaptured")
-            viewModel.saveYogaPose()
+            // Log.d(TAG, "MLPoseCaptured: $MLPoseCaptured")
+            viewModel.savePose()
         }*/
     }
 

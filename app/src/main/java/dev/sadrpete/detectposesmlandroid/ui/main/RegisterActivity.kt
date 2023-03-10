@@ -29,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register2)
+        
         txtName=findViewById(R.id.txtName)
         txtLastName=findViewById(R.id.txtLastName)
         txtEmail=findViewById(R.id.txtEmail)

@@ -122,7 +122,7 @@ class IdentifyPoseFragment : BaseFragment() {
             val result = viewModel.doInference(input).toString()
             withContext(Dispatchers.Main){
                 delay(300)
-                // Log.d(MainActivity.TAG, "YOGA POSE PREDICTED: $result")
+                // Log.d(MainActivity.TAG, "POSE PREDICTED: $result")
                 displayToast(requireContext(), result)
             }
         }
