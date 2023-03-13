@@ -45,4 +45,6 @@ This project is a cross-platform mobile application that uses a Python model to 
 
 
 
- proyecto modular app deteccion de riesgos posturales
+ Proyecto modular app deteccion de riesgos posturales.
+ Este proyecto utiliza la API de Google ML Kit para realizar detección de texto en imágenes. La API de Google ML Kit es propiedad de Google.
+
