@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="ideal">#E403D9C4</color>
+    <color name="ideal_line">#018685</color>
+    <color name="postura">#E15EFD42</color>
+    <color name="postura_line">#4DCD36</color>
+
 </resources>

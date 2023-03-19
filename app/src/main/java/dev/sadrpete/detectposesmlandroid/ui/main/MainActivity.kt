@@ -1,9 +1,11 @@
 package dev.sadrpete.detectposesmlandroid.ui.main
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -37,6 +39,12 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val statsButton = findViewById<Button>(R.id.button)
+        statsButton.setOnClickListener{
+            val intent = Intent(this, RadarChart::class.java)
+            startActivity(intent)
+        }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.findNavController()

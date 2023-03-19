@@ -67,15 +67,14 @@ data class MLPose(
 
 
         val newReference = dbReference.child(auth?.uid.toString()).child("$anio/$mes/$dia")
-
-            newReference.child("LeftShoulderAngle").setValue(HombroIzquierdo)
-            newReference.child("RightShoulderAngle").setValue(HombroDerecho)
-            newReference.child("LeftElbowAngle").setValue(CodoIzquierdo)
-            newReference.child("RightElbowAngle").setValue(CodoDerecho)
-            newReference.child("LeftHipAngle").setValue(CaderaIzquierda)
-            newReference.child("RightHipAngle").setValue(CaderaDerecha)
-            newReference.child("LeftKneeAngle").setValue(RodillaIzquierda)
-            newReference.child("RightKneeAngle").setValue(RodillaDerecha)
+        newReference.child("LeftShoulderAngle").setValue(HombroIzquierdo)
+        newReference.child("RightShoulderAngle").setValue(HombroDerecho)
+        newReference.child("LeftElbowAngle").setValue(CodoIzquierdo)
+        newReference.child("RightElbowAngle").setValue(CodoDerecho)
+        newReference.child("LeftHipAngle").setValue(CaderaIzquierda)
+        newReference.child("RightHipAngle").setValue(CaderaDerecha)
+        newReference.child("LeftKneeAngle").setValue(RodillaIzquierda)
+        newReference.child("RightKneeAngle").setValue(RodillaDerecha)
 
         //println(jsonObject)
     }

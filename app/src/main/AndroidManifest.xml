@@ -17,21 +17,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DetectPosesMLAndroid">
         <activity
+            android:name=".ui.main.RadarChart"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.ForgotPassActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.main.RegisterActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.LoginActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
