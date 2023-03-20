@@ -9,6 +9,7 @@ import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
 import dev.sadrpete.detectposesmlandroid.R
+import kotlin.random.Random
 
 class RadarChart : AppCompatActivity() {
 
@@ -33,16 +34,24 @@ class RadarChart : AppCompatActivity() {
         list.add(RadarEntry(70f))
         list.add(RadarEntry(70f))
 
+        val randomFloat = Random.nextFloat() * 20.0f + 20.0f
+        val randomFloat2 = Random.nextFloat() * 20.0f + 20.0f
+        val randomFloat3 = Random.nextFloat() * 20.0f + 130.0f
+        val randomFloat4 = Random.nextFloat() * 20.0f + 130.0f
+        val randomFloat5 = Random.nextFloat() * 25.0f + 120.0f
+        val randomFloat6 = Random.nextFloat() * 25.0f + 120.0f
+        val randomFloat7 = Random.nextFloat() * 20.0f + 60.0f
+        val randomFloat8 = Random.nextFloat() * 20.0f + 60.0f
 
         val list2:ArrayList<RadarEntry> = ArrayList()
-        list2.add(RadarEntry(10f))
-        list2.add(RadarEntry(180f))
-        list2.add(RadarEntry(145f))
-        list2.add(RadarEntry(132f))
-        list2.add(RadarEntry(168f))
-        list2.add(RadarEntry(44f))
-        list2.add(RadarEntry(90f))
-        list2.add(RadarEntry(90f))
+        list2.add(RadarEntry(randomFloat))
+        list2.add(RadarEntry(randomFloat2))
+        list2.add(RadarEntry(randomFloat3))
+        list2.add(RadarEntry(randomFloat4))
+        list2.add(RadarEntry(randomFloat5))
+        list2.add(RadarEntry(randomFloat6))
+        list2.add(RadarEntry(randomFloat7))
+        list2.add(RadarEntry(randomFloat8))
 
 
         val radarDataSet = RadarDataSet(list,"Postura ideal")
