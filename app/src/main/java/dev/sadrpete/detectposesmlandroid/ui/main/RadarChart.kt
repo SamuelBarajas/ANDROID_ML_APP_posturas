@@ -1,19 +1,40 @@
 package dev.sadrpete.detectposesmlandroid.ui.main
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dev.sadrpete.detectposesmlandroid.R
+import dev.sadrpete.detectposesmlandroid.ui.main.MainActivity.Companion.TAG
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class RadarChart : AppCompatActivity() {
 
     lateinit var radarChart: RadarChart
+    private lateinit var mDatabase: DatabaseReference
+    val user : FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val userID = user?.uid.toString()
+
+    val calendario = Calendar.getInstance()
+    val dia = calendario.get(Calendar.DAY_OF_MONTH)
+    val mes = calendario.get(Calendar.MONTH) + 1
+    val anio = calendario.get(Calendar.YEAR)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +45,11 @@ class RadarChart : AppCompatActivity() {
 
         radarChart = findViewById(R.id.radar_chart)
 
+        mDatabase = Firebase.database.reference
+
+
+
+
         val list:ArrayList<RadarEntry> = ArrayList()
         list.add(RadarEntry(30f))
         list.add(RadarEntry(30f))
@@ -31,27 +57,38 @@ class RadarChart : AppCompatActivity() {
         list.add(RadarEntry(145f))
         list.add(RadarEntry(140f))
         list.add(RadarEntry(140f))
-        list.add(RadarEntry(70f))
-        list.add(RadarEntry(70f))
+        list.add(RadarEntry(160f))
+        list.add(RadarEntry(160f))
 
-        val randomFloat = Random.nextFloat() * 20.0f + 20.0f
-        val randomFloat2 = Random.nextFloat() * 20.0f + 20.0f
-        val randomFloat3 = Random.nextFloat() * 20.0f + 130.0f
-        val randomFloat4 = Random.nextFloat() * 20.0f + 130.0f
-        val randomFloat5 = Random.nextFloat() * 25.0f + 120.0f
-        val randomFloat6 = Random.nextFloat() * 25.0f + 120.0f
-        val randomFloat7 = Random.nextFloat() * 20.0f + 60.0f
-        val randomFloat8 = Random.nextFloat() * 20.0f + 60.0f
 
         val list2:ArrayList<RadarEntry> = ArrayList()
-        list2.add(RadarEntry(randomFloat))
-        list2.add(RadarEntry(randomFloat2))
-        list2.add(RadarEntry(randomFloat3))
-        list2.add(RadarEntry(randomFloat4))
-        list2.add(RadarEntry(randomFloat5))
-        list2.add(RadarEntry(randomFloat6))
-        list2.add(RadarEntry(randomFloat7))
-        list2.add(RadarEntry(randomFloat8))
+
+        var posturaData: Map<Double, Double>? = null
+        mDatabase.child("Postura").child("$userID").child("$anio/$mes/$dia").get().addOnSuccessListener { dataSnapshot ->
+            if (dataSnapshot.exists()) {
+
+                posturaData = dataSnapshot.value as Map<Double, Double>
+                var LeftShoulder = posturaData!!["LeftShoulderAngle"]
+
+
+                Log.i("firebase", "El nombre es $LeftShoulder")
+                posturaData?.get("LeftShoulderAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("RightShoulderAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("LeftElbowAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("RightElbowAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("LeftHipAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("RightHipAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("LeftKneeAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+                posturaData?.get("RightKneeAngle")?.let { list2.add(it?.let { RadarEntry(it.toFloat()) }) }
+
+
+            } else {
+                Log.i("firebase", "No se encontraron datos para la fecha especificada.")
+            }
+        }.addOnFailureListener{ exception ->
+            Log.e("firebase", "Error al obtener los datos de Firebase", exception)
+        }
+
 
 
         val radarDataSet = RadarDataSet(list,"Postura ideal")
@@ -84,4 +121,8 @@ class RadarChart : AppCompatActivity() {
         radarChart.data.setDrawValues(true)
         radarChart.description.textSize = 30f
     }
+
+
+
+
 }

@@ -12,7 +12,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volver"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:layout_margin="5dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/design_default_color_primary"
+        android:paddingLeft="15dp"
+        android:paddingTop="6dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="8dp"
+        android:text="Actualizar"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.github.mikephil.charting.charts.RadarChart
@@ -22,6 +42,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.github.mikephil.charting.charts.RadarChart>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.github.mikephil.charting.charts.RadarChart>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
