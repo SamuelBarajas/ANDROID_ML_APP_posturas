@@ -27,9 +27,13 @@ This project is a cross-platform mobile application that uses a Python model (Go
 
 ## ⚙️ Instalation/Configuration Process
 ### Mobile Android App
-- Download apk file from:<a download="SADRPETE_2023.apk" href="app-debug.apk" title="ImageName"> Download Link</a>
+- Download apk file from:<a download="SADRPETE_2023.apk" href="/app-debug.apk" title="ImageName"> download link</a>
   - Provides storage permissions and access to the device's camera.
   - If you can't provide the permissions from the app, please go to the app settings and add them manually.
+
+<a download="SADRPETE_2023.apk" href="/app-debug.apk" title="ImageName">
+    <img width="240px" src = "WhatsApp Video 2023-03-27 at 10.55.02 PM (online-video-cutter.com).gif"></img>
+</a>
 
 ### Desktop Application
 - Download installation files from repository
