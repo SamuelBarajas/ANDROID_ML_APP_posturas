@@ -27,7 +27,7 @@ This project is a cross-platform mobile application that uses a Python model (Go
 
 ## ⚙️ Instalation/Configuration Process
 ### Mobile Android App
-- Download apk file and install.
+- Download apk file from: <a href="/src/Docs/SRTM_CV.pdf" download="SaúlTejeda_CV"> download link </a>and install.
   - Provides storage permissions and access to the device's camera.
   - If you can't provide the permissions from the app, please go to the app settings and add them manually.
 
